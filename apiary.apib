@@ -4,7 +4,7 @@ HOST: https://concierge.exclusivetours.cz/api/v1
 # exclusive_tours_solo
 
 Polls is a simple API allowing consumers to view polls and vote in them.
-# Group Registration
+# Group Registration/Login
 # Registration [/signup]
 ## Register [POST]
 
@@ -30,6 +30,31 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 
         {
             "message": "unprocessable entity: same email already registered"
+        }
+
+# Registration [/signin]
+## Sign in [POST]
+
++ Returns user id and access token if authentication succeeds
+
++ Request (application/json)
+
+        {
+            "email": "vomacka@gmail.com",
+            "password": "supersecretpassword"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "token": "valid_access_token",
+            "user_id": 1
+        }
+
++ Response 403 (application/json)
+
+        {
+            "message": "not authorized: incorrect email/password combination"
         }
 
 # Group Users
