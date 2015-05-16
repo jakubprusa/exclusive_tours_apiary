@@ -66,7 +66,7 @@ Allowed HTTPs requests:
 + Response 200 (application/json)
 
         {
-            "token": "valid_access_token",
+            "token": "valid_user_access_token",
             "user_id": 1
         }
 
@@ -96,4 +96,21 @@ The following is a section of resources related to the user.
             "timezone": "Europe/Kiev",
             "timezone_in_int": 7200
         }
+
+# Profile [/user/profile]
+
+Will contain quite some informations
++ Saved Persons that can be added to the flight/hotel reservation
++ Users preferences - preferred class, preferred carrier ......
++ Passport, Identification
++ GP Web Pay credit card token
+
+
+## Retreive Profile [GET]
+
+
++ Response 200
+
+## Update Profile [PATCH]
+
 
