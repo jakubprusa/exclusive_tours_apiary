@@ -82,10 +82,7 @@ Allowed HTTPs requests:
 The following is a section of resources related to the user.
 
 ## Retreive user [GET]
-+ Request (application/json)
-    + Headers
-    
-            user_token: "{api_token}"
+
 + Response 200 (application/json)
 
         {
@@ -119,11 +116,12 @@ Will contain quite some information
 
 
 # Group Flight
-# Flight search [/flight/search]
+# Search [/flight/search]
 
 ## Search [GET]
 
-Returns set of search results
+Returns set of search results containing only minimal set of attributes.
+Also saves full search results for subsequent use.
 
 + Request (application/json)
 
@@ -137,4 +135,48 @@ Returns set of search results
 
         {
             "results" : [],
+        }
+        
+
+
+# Detail [/flight/detail] 
+## Retreive detail [GET]
+
+Retreieves all attributes from found flight based on identifier.
+
++ Request (application/json)
+
+        {
+            "search_result_identifier": "GUID generated during search"
+        }
+        
+
+
++ Response 200 (application/json)
+
+        {
+            "flight_details" : {},
+        }
+        
++ Response 499 (application/json)
+
+        {
+            "message": "expired: search result no longer available"
+        }
+        
+# Make reservation [/flight/reservation]
+## Create reservation [POST]
+
+Creates reservation of flight based on identifier received from search.
+
++ Request (application/json)
+
+        {
+            "search_result_identifier": "GUID generated during search"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "reservation_identifier": "PNR identifier of valid reservation",
         }
