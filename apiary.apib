@@ -99,7 +99,7 @@ The following is a section of resources related to the user.
 
 # Profile [/user/profile]
 
-Will contain quite some informations
+Will contain quite some information
 + Saved Persons that can be added to the flight/hotel reservation
 + Users preferences - preferred class, preferred carrier ......
 + Passport, Identification
@@ -108,9 +108,30 @@ Will contain quite some informations
 
 ## Retreive Profile [GET]
 
-
 + Response 200
 
 ## Update Profile [PATCH]
 
++ Response 200
 
+
+# Group Flight
+# Flight search [/flight/search]
+
+## Search [GET]
+
+Returns set of search results
+
++ Request (application/json)
+
+        {
+            "search-payload": "to be specified more granularly"
+        }
+        
+
+
++ Response 200 (application/json)
+
+        {
+            "results" : [],
+        }
