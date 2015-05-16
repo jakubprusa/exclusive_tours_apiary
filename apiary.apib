@@ -78,9 +78,6 @@ Allowed HTTPs requests:
         }
 
 # Group Users
-+ Headers
-        
-            user_token: "{api_token}"
 # Users [/user]
 
 The following is a section of resources related to the user.
@@ -88,6 +85,9 @@ The following is a section of resources related to the user.
 ## Retreive user [GET]
 
 + Request (application/json)
+    + Headers
+        
+            user_token: "{api_token}"
 
 + Response 200 (application/json)
 
