@@ -193,6 +193,152 @@ All information to properly create fliht reservatino has to be provided
         }
         
         
+# Group Hotels
+# Search [/hotel/search]
+
+## Search [GET]
+
+Returns set of search results containing only minimal set of attributes.
+Also saves full search results for subsequent use.
+
++ Request (application/json)
+
+        {
+            "search-payload": "to be specified more granularly"
+        }
+        
+
+
++ Response 200 (application/json)
+
+        {
+            "results" : [],
+        }
+        
+
+
+# Detail [/hotel/detail] 
+## Retreive detail [GET]
+
+Retreieves all attributes from found flight based on identifier.
+
++ Request (application/json)
+
+        {
+            "search_result_identifier": "GUID generated during search"
+        }
+        
+
+
++ Response 200 (application/json)
+
+        {
+            "flight_details" : {},
+        }
+        
++ Response 499 (application/json)
+
+        {
+            "message": "expired: search result no longer available"
+        }
+        
+# Make reservation [/hotel/reservation]
+## Create reservation [POST]
+
+Creates reservation of flight based on identifier received from search.
+All information to properly create fliht reservatino has to be provided
++ All Passengers
++ Passengers id, birthdate .....
++ ......
+
++ Request (application/json)
+
+        {
+            "search_result_identifier": "GUID generated during search",
+            "passengers_details" : [ { } ],
+        }
+
++ Response 200 (application/json)
+
+        {
+            "reservation_identifier": "PNR identifier of valid reservation",
+        }
+
+
+# Group Transfer
+# Search [/transfer/search]
+
+## Search [GET]
+
+Returns set of search results containing only minimal set of attributes.
+Also saves full search results for subsequent use.
+
++ Request (application/json)
+
+        {
+            "search-payload": "to be specified more granularly"
+        }
+        
+
+
++ Response 200 (application/json)
+
+        {
+            "results" : [],
+        }
+        
+
+
+# Detail [/transfer/detail] 
+## Retreive detail [GET]
+
+Retreieves all attributes from found flight based on identifier.
+
++ Request (application/json)
+
+        {
+            "search_result_identifier": "GUID generated during search"
+        }
+        
+
+
++ Response 200 (application/json)
+
+        {
+            "flight_details" : {},
+        }
+        
++ Response 499 (application/json)
+
+        {
+            "message": "expired: search result no longer available"
+        }
+        
+# Make reservation [/transfer/reservation]
+## Create reservation [POST]
+
+Creates reservation of flight based on identifier received from search.
+All information to properly create fliht reservatino has to be provided
++ All Passengers
++ Passengers id, birthdate .....
++ ......
+
++ Request (application/json)
+
+        {
+            "search_result_identifier": "GUID generated during search",
+            "passengers_details" : [ { } ],
+        }
+
++ Response 200 (application/json)
+
+        {
+            "reservation_identifier": "PNR identifier of valid reservation",
+        }
+        
+        
+        
+        
 # Group Transaction
 # Transaction [/transaction]
 ## Commit transaction [POST]
