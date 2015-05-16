@@ -257,6 +257,15 @@ All information to properly create fliht reservatino has to be provided
 Returns set of search results containing only minimal set of attributes.
 Also saves full search results for subsequent use.
 
++ destination (string)      - Place where to book accomodation
++ purpose_of_visit (enum)   - Purpose of visit
++ time_departure(string)    - Time of check-in
++ time_departure(string)    - Time of check-out
++ number_rooms              - Count of rooms to book
++ number_adults             - Count of adults
++ number_kids               - Count of children
++ number_infants            - Count of infants
+
 + Request (application/json)
 
         {
@@ -268,7 +277,6 @@ Also saves full search results for subsequent use.
             "number_adults": 1,
             "number_kids": 3,
             "number_infants": 4,
-            
             
         }
         
