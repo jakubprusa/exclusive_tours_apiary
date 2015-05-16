@@ -24,6 +24,7 @@ Allowed HTTPs requests:
 
 
 # Group Registration/Login
+
 # Registration [/signup]
 ## Register [POST]
 
@@ -77,15 +78,16 @@ Allowed HTTPs requests:
         }
 
 # Group Users
++ Headers
+        
+            user_token: "{api_token}"
 # Users [/user]
 
 The following is a section of resources related to the user.
 
 ## Retreive user [GET]
+
 + Request (application/json)
-    + Headers
-        
-            user_token: "{api_token}"
 
 + Response 200 (application/json)
 
@@ -172,15 +174,48 @@ Retreieves all attributes from found flight based on identifier.
 ## Create reservation [POST]
 
 Creates reservation of flight based on identifier received from search.
+All information to properly create fliht reservatino has to be provided
++ All Passengers
++ Passengers id, birthdate .....
++ ......
 
 + Request (application/json)
 
         {
-            "search_result_identifier": "GUID generated during search"
+            "search_result_identifier": "GUID generated during search",
+            "passengers_details" : [ { } ],
         }
 
 + Response 200 (application/json)
 
         {
             "reservation_identifier": "PNR identifier of valid reservation",
+        }
+        
+        
+# Group Transaction
+# Transaction [/transaction]
+## Commit transaction [POST]
+
+Commits (or rolls back) full transaction
+
+
++ Request (application/json)
+
+        {
+            "reservation_identifier": "reservation_id_returned_by_GDS",
+        }
+
++ Response 200 (application/json)
+
+        {
+            "message" : "Success: Transaction has been successfully completed",
+            "transaction_id" : 12312,
+        }
+        
++ Response 499 (application/json)
+
+        {
+            "message": "Failure: Transaction could not be completed",
+            "reason": "Endpoint flights/hotels/transfers is inaccessible",
         }
