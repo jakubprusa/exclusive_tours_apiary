@@ -3,7 +3,26 @@ HOST: https://concierge.exclusivetours.cz/api/v1
 
 # exclusive_tours_solo
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+# Concierge ET - API Documentation
+Concierge ET is based on REST principles, all you need to use it is your Concierge ET account.
+You have to be authenticated and call the simple HTTPs request on the URL specified below.
+The following documentation covers core resources that are used to manipulate with the main
+entities. First of all, read basic instructions to start using the API.
+
+To be able to access API at all you have to have valid application token and send it as a part of HTTP header
+
+ * Send a HTTP header `App-Token: {app_token}`, where `{app_token}` is your Application token
+ 
+For calling endpoints valid user authentication token has to be provided. This token can be retreived using  signin endpoint.
+
+Allowed HTTPs requests:
+
+ * `POST` - To create resource
+ * `PATCH` - To update resource
+ * `GET` - Get a resource or list of resources
+ * `DELETE` - To delete resource
+
+
 # Group Registration/Login
 # Registration [/signup]
 ## Register [POST]
