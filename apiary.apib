@@ -260,7 +260,16 @@ Also saves full search results for subsequent use.
 + Request (application/json)
 
         {
-            "search-payload": "to be specified more granularly"
+            "destination": "London",
+            "purpose_of_visit: "Bussines",
+            "time_departure": "2015-05-15T13:05:05+00:0",
+            "time_arrival": "2015-05-15T13:05:05+00:0",
+            "number_rooms": 2,
+            "number_adults": 1,
+            "number_kids": 3,
+            "number_infants": 4,
+            
+            
         }
         
 
@@ -272,7 +281,6 @@ Also saves full search results for subsequent use.
         }
         
 
-
 # Detail [/hotel/detail] 
 ## Retreive detail [GET]
 
@@ -281,7 +289,7 @@ Retreieves all attributes from found flight based on identifier.
 + Request (application/json)
 
         {
-            "search_result_identifier": "GUID generated during search"
+            "booking_id": "1"
         }
         
 
@@ -289,7 +297,64 @@ Retreieves all attributes from found flight based on identifier.
 + Response 200 (application/json)
 
         {
-            "flight_details" : {},
+            "booking_details" : {},
+        }
+        
++ Response 499 (application/json)
+
+        {
+            "message": "expired: search result no longer available"
+        }
+
+
+# Detail [/hotel/rooms] 
+## Retreive detail [GET]
+
+Retreieves all attributes from found flight based on identifier.
+
++ Request (application/json)
+
+        {
+            "booking_id": "1"
+        }
+        
+
+
++ Response 200 (application/json)
+
+        {
+            "booking_details" : {
+                "summary": {
+                    "latitude": 49.32,
+                    "longitude": 49.32,
+                    "description": "Lorem ipsum..",
+                    "pictures": {
+                        "http://exlusive-tours.com/pic/12.png",
+                        "http://exlusive-tours.com/pic/13.png",
+                        "http://exlusive-tours.com/pic/14.png"
+                    }
+
+                },
+                "rooms":[
+                    {
+                        "name": "Luxury exclusice suite",
+                        "description": "Lorem ipsum...",
+                        "price": 150000,
+                        "garniture" : {
+                            "bedrooms" : 4,
+                            "bathrooms" : 5                            
+                        }
+                    }, {
+                        "name": "Luxury exclusice suite",
+                        "description": "Lorem ipsum...",
+                        "price": 150000,
+                        "garniture" : {
+                            "bedrooms" : 4,
+                            "bathrooms" : 5                            
+                        }
+                    }
+                ]
+            }
         }
         
 + Response 499 (application/json)
@@ -311,6 +376,7 @@ All information to properly create fliht reservatino has to be provided
 
         {
             "search_result_identifier": "GUID generated during search",
+            "booking_id" : 1,
             "passengers_details" : [ { } ],
         }
 
