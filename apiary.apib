@@ -174,10 +174,15 @@ Also saves full search results for subsequent use.
 
 Retreieves all attributes from found flight based on identifier.
 
++flight_id (number) GUID generated during search
++flight_duration (number) Duration of all flights in minutes
++layover_time (numner) Time for layover in minutes
+
+
 + Request (application/json)
 
         {
-            "search_result_identifier": "GUID generated during search"
+            "flight_id": "1"
         }
         
 
@@ -185,7 +190,34 @@ Retreieves all attributes from found flight based on identifier.
 + Response 200 (application/json)
 
         {
-            "flight_details" : {},
+            "flight_details" : {
+                "summary": {
+                    "flight_duration": 7200,
+                    "number_layovers": 2,
+                    "travel_class": "economy_class",
+                    "flight_type": "one-way"
+
+                },
+                "connections":[
+                    {
+                        "place_departure": "PRG",
+                        "place_arrival": "VIE",
+                        "time_departure": "2015-05-15T13:05:05+00:0",
+                        "time_arrival": "2015-05-15T13:05:05+00:0",
+                        "airline": "Lufthansa",
+                        "flight_code": "OK1234"
+                        "layover_time": "90"
+                    }, {
+                        "place_departure": "VIE",
+                        "place_arrival": "CHDG",
+                        "time_departure": "2015-05-15T13:05:05+00:0",
+                        "time_arrival": "2015-05-15T13:05:05+00:0",
+                        "airline": "Lufthansa",
+                        "flight_code": "OK4321"
+                        "layover_time": "-1"
+                    }
+                ]
+            }
         }
         
 + Response 499 (application/json)
