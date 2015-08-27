@@ -25,7 +25,7 @@ Allowed HTTPs requests:
 
 # Group Registration/Login
 
-# Registration [/signup]
+# Registration [/users]
 ## Register [POST]
 
 + Returns created user id and access token if registration succeeds
@@ -33,26 +33,31 @@ Allowed HTTPs requests:
 + Request (application/json)
 
         {
-            "first_name": "Roman",
-            "last_name": "Vomacka",
-            "email": "vomacka@gmail.com",
-            "password": "supersecretpassword"
+            "user[email]": "vomacka@gmail.com",
+            "user[password]": "supersecretpassword"
         }
         
 + Response 200 (application/json)
 
         {
-            "token": "valid_access_token",
-            "user_id": 1
+          "id": 3,
+          "email": "vomacka@gmail.com",
+          "created_at": "2015-08-27T19:31:22.708Z",
+          "updated_at": "2015-08-27T19:31:22.708Z",
+          "auth_token": "DqACTi7ucngCAMotWcG4"
         }
-
+        
 + Response 422 (application/json)
 
         {
-            "message": "unprocessable entity: same email already registered"
+          "errors": {
+            "email": [
+              "has already been taken"
+            ]
+          }
         }
 
-# Sign in [/signin]
+# Sign in [/sessions]
 ## Sign in [POST]
 
 + Returns user id and access token if authentication succeeds
@@ -67,15 +72,19 @@ Allowed HTTPs requests:
 + Response 200 (application/json)
 
         {
-            "token": "valid_user_access_token",
-            "user_id": 1
+          "id": 3,
+          "email": "vomacka@gmail.com",
+          "created_at": "2015-08-27T19:31:22.000Z",
+          "updated_at": "2015-08-27T19:33:17.818Z",
+          "auth_token": "QU_ratzvfWHE9GpshWNs"
         }
 
-+ Response 403 (application/json)
++ Response 422 (application/json)
 
         {
-            "message": "not authorized: incorrect email/password combination"
+          "errors": "Invalid email or password"
         }
+
 
 # Group Users
 # Users [/user]
