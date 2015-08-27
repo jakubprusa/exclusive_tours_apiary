@@ -96,23 +96,27 @@ The following is a section of resources related to the user.
 + Request (application/json)
     + Headers
         
-            user_token: "{api_token}"
+            Authorization: "{auth_token}"
 
 + Response 200 (application/json)
 
         {
-            "id": 1,
-            "name": "Alexey Vasiliev",
-            "email": "alexey.vasiliev@railsware.com",
-            "api_token": "{api_token}",
-            "gravatar_icon": "http://www.gravatar.com/avatar/2b18d4346ca1ec18cb310cd86a51a4e2?s=100",
-            "gravatar_little_icon": "http://www.gravatar.com/avatar/2b18d4346ca1ec18cb310cd86a51a4e2?s=30",
-            "created_at_int": 1355064377,
-            "timezone": "Europe/Kiev",
-            "timezone_in_int": 7200
+          "id": 2,
+          "email": "vomacka@gmail.com",
+          "created_at": "2015-08-27T19:43:37.000Z",
+          "updated_at": "2015-08-27T19:43:37.000Z",
+          "auth_token": "xdAzjBfzAiZQy3oSae3M"
+        }
+        
++ Response 401 (application/json)
+
+        {
+          "errors": "Not authenticated"
         }
 
-# Profile [/user/profile]
+
+
+# Profile - not implemented yet [/user/profile]
 
 Will contain quite some information
 + Saved Persons that can be added to the flight/hotel reservation
