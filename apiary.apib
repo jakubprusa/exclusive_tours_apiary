@@ -33,8 +33,10 @@ Allowed HTTPs requests:
 + Request (application/json)
 
         {
-            "user[email]": "vomacka@gmail.com",
-            "user[password]": "supersecretpassword"
+            "email": "vomacka@gmail.com",
+            "password": "supersecretpassword",
+            "firstname": "Ostra",
+            "surname": "Vomacka"
         }
         
 + Response 200 (application/json)
@@ -42,6 +44,8 @@ Allowed HTTPs requests:
         {
           "id": 3,
           "email": "vomacka@gmail.com",
+          "firstname": "Ostra",
+          "surname": "Vomacka",
           "created_at": "2015-08-27T19:31:22.708Z",
           "updated_at": "2015-08-27T19:31:22.708Z",
           "auth_token": "DqACTi7ucngCAMotWcG4"
